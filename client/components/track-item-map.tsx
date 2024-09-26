@@ -37,10 +37,6 @@ interface TrackingItem {
 
 interface TrackItemMapProps {
   id: number;
-  location: string;
-  date: string;
-  status: string;
-  coordinates: [number, number];
   refreshData: number;
 }
 
@@ -61,7 +57,7 @@ export function TrackItemMapComponent({ id, refreshData }: TrackItemMapProps) {
   useEffect(() => {
     const init = async () => {
       try {
-        const data = await PharmaContract.methods.getMedicineHistory(id).call();
+        const data = await PharmaContract.getMedicineHistory(id);
 
         // Transform the data
         const formattedData: TrackingItem[] = data.map((item: any, index: number) => ({
@@ -106,9 +102,12 @@ export function TrackItemMapComponent({ id, refreshData }: TrackItemMapProps) {
           </div>
           <div className="lg:col-span-2 h-[600px] rounded-lg overflow-hidden">
             {trackingData && trackingData.length > 0 && trackingData[0].coordinates != null &&
-              <MapContainer center={trackingData[0].coordinates} zoom={4} style={{ height: '100%', width: '100%' }}>
+              <MapContainer
+                // @ts-ignore
+                center={trackingData[0].coordinates} zoom={4} style={{ height: '100%', width: '100%' }}>
                 <TileLayer
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  // @ts-ignore
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 />
                 {trackingData.map((item) => (
@@ -116,7 +115,9 @@ export function TrackItemMapComponent({ id, refreshData }: TrackItemMapProps) {
                     <Popup>{item.location}<br />{item.date}</Popup>
                   </Marker>
                 ))}
-                <Polyline positions={trackingData.map(item => item.coordinates as [number, number])} color="blue" />
+                <Polyline positions={trackingData.map(item => item.coordinates as [number, number])}
+                  // @ts-ignore
+                  color="blue" />
               </MapContainer>
             }
           </div>

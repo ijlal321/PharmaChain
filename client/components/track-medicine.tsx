@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Loader, Search } from 'lucide-react'
-import toast from 'react-hot-toast'
+// import // toast from 'react-hot-// toast'
 import { TrackItemMapComponent } from './track-item-map'
 import { useWeb3 } from '../app/contexts/Web3Context'
 
@@ -28,12 +28,12 @@ export function TrackMedicine() {
   const handleTrackMedicine = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     setIsLoading(true)
-    toast.loading("Fetching medicine data...")
+    // toast.loading("Fetching medicine data...")
 
     try {
-      const medicineData = await PharmaContract.methods.Medicines(medicineId).call();
+      const medicineData = await PharmaContract.Medicines(medicineId);
 
-      const organization = await PharmaContract.methods.Organizations(medicineData.OrganizationId).call();
+      const organization = await PharmaContract.Organizations(medicineData.OrganizationId);
       const organizationName = organization.name;
 
       const expiryDateTimestamp = Number(medicineData.expiryDate); // Convert BigInt to number
@@ -62,18 +62,12 @@ export function TrackMedicine() {
         expiryDate: formattedExpiryDate
       };
 
-      // console.log(mockData);
-
       setMedicineData(mockData)
       SetMapRefreshData(MapRefreshData + 1)
-      toast.dismiss()
-      toast.success("Medicine data fetched successfully!")
 
 
     } catch (error) {
       console.error('Error creating Organization:', error);
-      toast.dismiss()
-      toast.error("Error getting Data")
     }
     finally {
       setIsLoading(false)
@@ -83,9 +77,6 @@ export function TrackMedicine() {
   const handleAddCheckpoint = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     setIsLoading(true)
-    toast.loading("Adding new checkpoint...")
-
-    // Simulating API call
 
     try {
       if (medicineData == null) {
@@ -93,18 +84,35 @@ export function TrackMedicine() {
         return;
       }
 
-      if (newCheckpoint.status == 'intransit') {
-        await PharmaContract.methods.addInTransitCheckpoint(medicineId, newCheckpoint.location, newCheckpoint.latitude, newCheckpoint.longitude).send({ from: accounts[0] });
+      let transaction;
+
+      if (newCheckpoint.status === 'intransit') {
+        transaction = await PharmaContract.addInTransitCheckpoint(
+          medicineId,
+          newCheckpoint.location,
+          newCheckpoint.latitude,
+          newCheckpoint.longitude
+        );
+      } else if (newCheckpoint.status === 'shipped') {
+        transaction = await PharmaContract.addShippedCheckpoint(
+          medicineId,
+          newCheckpoint.location,
+          newCheckpoint.latitude,
+          newCheckpoint.longitude
+        );
+      } else if (newCheckpoint.status === 'sold') {
+        transaction = await PharmaContract.addSoldCheckpoint(
+          medicineId,
+          newCheckpoint.location,
+          newCheckpoint.latitude,
+          newCheckpoint.longitude
+        );
+      } else {
+        throw new Error("Invalid status given");
       }
-      else if (newCheckpoint.status == 'shipped') {
-        await PharmaContract.methods.addShippedCheckpoint(medicineId, newCheckpoint.location, newCheckpoint.latitude, newCheckpoint.longitude).send({ from: accounts[0] });
-      }
-      else if (newCheckpoint.status == 'sold') {
-        await PharmaContract.methods.addSoldCheckpoint(medicineId, newCheckpoint.location, newCheckpoint.latitude, newCheckpoint.longitude).send({ from: accounts[0] });
-      }
-      else {
-        throw ("invalid id given")
-      }
+
+      // Wait for the transaction to be mined
+      await transaction.wait();
     } catch (error) {
       console.error('Error adding Checkpoint: ', error);
     }
@@ -114,10 +122,7 @@ export function TrackMedicine() {
     console.log("New Checkpoint:", newCheckpoint)
 
     setIsLoading(false)
-    toast.dismiss()
-    toast.success("New checkpoint added successfully!")
 
-    // Reset form
     setNewCheckpoint({
       location: '',
       latitude: '',
@@ -265,7 +270,7 @@ export function TrackMedicine() {
               <CardTitle className="text-gray-100">Track Location</CardTitle>
             </CardHeader>
             <CardContent>
-              <TrackItemMapComponent id={medicineId} refreshData={MapRefreshData} />
+              <TrackItemMapComponent id={Number(medicineId)} refreshData={MapRefreshData} />
             </CardContent>
           </Card>
         )}

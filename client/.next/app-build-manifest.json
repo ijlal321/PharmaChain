@@ -1,31 +1,54 @@
 {
   "pages": {
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+    "/_not-found/page": [
+      "static/chunks/webpack-cfe9477c85cdd56d.js",
+      "static/chunks/fd9d1056-ce6a0c318a4e0f7b.js",
+      "static/chunks/23-8200afbefa9086d8.js",
+      "static/chunks/main-app-20f99985663d1df0.js",
+      "static/chunks/app/_not-found/page-785e43ddb87c5ed8.js"
     ],
     "/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
-    ],
-    "/track-medicine/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/track-medicine/page.css",
-      "static/chunks/app/track-medicine/page.js"
+      "static/chunks/webpack-cfe9477c85cdd56d.js",
+      "static/chunks/fd9d1056-ce6a0c318a4e0f7b.js",
+      "static/chunks/23-8200afbefa9086d8.js",
+      "static/chunks/main-app-20f99985663d1df0.js",
+      "static/css/30afd9247e73b5f2.css",
+      "static/chunks/60-944cbbbe9a30df60.js",
+      "static/chunks/346-34375365a30479fd.js",
+      "static/chunks/app/layout-2bea65eb82f96816.js"
     ],
     "/manage-organization/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/manage-organization/page.js"
+      "static/chunks/webpack-cfe9477c85cdd56d.js",
+      "static/chunks/fd9d1056-ce6a0c318a4e0f7b.js",
+      "static/chunks/23-8200afbefa9086d8.js",
+      "static/chunks/main-app-20f99985663d1df0.js",
+      "static/chunks/60-944cbbbe9a30df60.js",
+      "static/chunks/950-613ef9024f5e3016.js",
+      "static/chunks/127-45f76d4883095b3e.js",
+      "static/chunks/346-34375365a30479fd.js",
+      "static/chunks/app/manage-organization/page-0a3387d8313cc40d.js"
     ],
-    "/_not-found/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+    "/page": [
+      "static/chunks/webpack-cfe9477c85cdd56d.js",
+      "static/chunks/fd9d1056-ce6a0c318a4e0f7b.js",
+      "static/chunks/23-8200afbefa9086d8.js",
+      "static/chunks/main-app-20f99985663d1df0.js",
+      "static/chunks/950-613ef9024f5e3016.js",
+      "static/chunks/994-9a1172ceb698c564.js",
+      "static/chunks/app/page-35a2cfea2023b10a.js"
+    ],
+    "/track-medicine/page": [
+      "static/chunks/webpack-cfe9477c85cdd56d.js",
+      "static/chunks/fd9d1056-ce6a0c318a4e0f7b.js",
+      "static/chunks/23-8200afbefa9086d8.js",
+      "static/chunks/main-app-20f99985663d1df0.js",
+      "static/css/857aa62baa17c894.css",
+      "static/chunks/d0deef33-0f9ecd513dc14faf.js",
+      "static/chunks/60-944cbbbe9a30df60.js",
+      "static/chunks/950-613ef9024f5e3016.js",
+      "static/chunks/127-45f76d4883095b3e.js",
+      "static/chunks/346-34375365a30479fd.js",
+      "static/chunks/app/track-medicine/page-0af37eae2e803385.js"
     ]
   }
 }

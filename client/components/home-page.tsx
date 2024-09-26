@@ -10,7 +10,7 @@ export function HomePageComponent() {
     <div className="flex flex-col min-h-screen">
       <header className="absolute top-0 left-0 right-0 z-10 py-4">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-white">CipherCraft Hackathon</h1>
+          <h1 className="text-2xl font-bold text-white">Polygon Build Hackathon</h1>
           <nav>
             <ul className="flex space-x-6">
               <li><a href="#about" className="text-white hover:text-cyan-400 transition-colors">About</a></li>
@@ -58,7 +58,7 @@ export function HomePageComponent() {
           <div className="container mx-auto px-4">
             <h3 className="text-3xl font-bold text-center mb-12 text-cyan-400">About Our Project</h3>
             <p className="text-center max-w-2xl mx-auto mb-8 text-lg">
-              Our CipherCraft Hackathon project tackles the challenges in pharmaceutical supply chains using blockchain technology.
+              Our Hackathon project tackles the challenges in pharmaceutical supply chains using blockchain technology.
               We're creating a prototype that demonstrates how blockchain can enhance security, traceability, and efficiency in the distribution of medicines.
             </p>
             <div className="flex justify-center space-x-12">
@@ -130,7 +130,7 @@ export function HomePageComponent() {
 
         <section className="py-20 bg-slate-900 text-white">
           <div className="container mx-auto px-4 text-center">
-            <h3 className="text-3xl font-bold mb-4 text-cyan-400">Join Us at CipherCraft Hackathon</h3>
+            <h3 className="text-3xl font-bold mb-4 text-cyan-400">Join Us at Hackathon</h3>
             <p className="text-xl mb-8">Watch our project presentation and see how we're revolutionizing pharmaceutical supply chains!</p>
             <Button variant="outline" size="lg" className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 text-lg px-8 py-3">
               Hackathon Schedule
@@ -141,7 +141,7 @@ export function HomePageComponent() {
 
       <footer className="bg-slate-900 py-8 border-t border-slate-700 text-white">
         <div className="container mx-auto px-4 text-center text-slate-400">
-          <p>&copy; 2023 CipherCraft Hackathon - Pharmaceutical Supply Chain with Blockchain. All rights reserved.</p>
+          <p>&copy; 2024 Polygon Fest 24 Hackathon - Pharmaceutical Supply Chain with Blockchain. All rights reserved.</p>
         </div>
       </footer>
     </div>

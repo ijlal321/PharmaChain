@@ -21,55 +21,98 @@ export function ManageOrganization() {
 
   const handleCreateOrganization = async () => {
     try {
-      await PharmaContract.methods.createOrganization(organizationName).send({ from: accounts[0] });
+      console.log(accounts);
+      
+      const tx = await PharmaContract.createOrganization(organizationName);
+      await tx.wait(); 
+  
+      console.log('Organization created successfully!');
     } catch (error) {
       console.error('Error creating Organization:', error);
     }
-  }
+  };
+  
 
-  const handleLaunchMedicine = async (e: { preventDefault: () => void }) => {
+  const handleLaunchMedicine = async (e) => {
     e.preventDefault();
     console.log('Launching new medicine:', {
       name: newMedicineName,
       location: newMedicineLocation,
       latitude: newMedicineLatitude,
       longitude: newMedicineLongitude,
-      expiryDate: newMedicineExpiryDate
-    })
+      expiryDate: newMedicineExpiryDate,
+    });
+  
     try {
-      const organizaitonId = await PharmaContract.methods.getMyOrganizationId().call({ from: accounts[0]});
+      const organizaitonId = await PharmaContract.getMyOrganizationId();
+  
       const date = new Date(newMedicineExpiryDate + 'T00:00:00Z');
-      const newDate = Math.floor((date.getTime()) / 1000);
-      const tx = await PharmaContract.methods.manufactureMedicine(organizaitonId, newMedicineName, newDate, newMedicineLocation, newMedicineLatitude, newMedicineLongitude).send({ from: accounts[0] });
-    
-      const event = tx.events.medicineLaunched;
+      const newDate = Math.floor(date.getTime() / 1000);
+  
+      const tx = await PharmaContract.manufactureMedicine(
+        organizaitonId,
+        newMedicineName,
+        newDate,
+        newMedicineLocation,
+        newMedicineLatitude,
+        newMedicineLongitude,
+        {
+          gasLimit: 500000, 
+        }
+      );
+  
+      const receipt = await tx.wait();
+  
+      // Check for the emitted event
+      const event = receipt.events.find((event) => event.event === 'medicineLaunched');
       if (event) {
-        const emittedMedicineId = event.returnValues[0];
-        alert(`Medicine Launched with ID: ${emittedMedicineId}`); 
+        const emittedMedicineId = event.args[0];
+        alert(`Medicine Launched with ID: ${emittedMedicineId}`);
       }
-
+  
     } catch (error) {
-      console.error('Error creating Organization:', error);
+      console.error('Error creating Medicine:', error);
     }
-  }
+  };
 
-  const handleApproveMember = async() => {
+  
+  const handleApproveMember = async () => {
+    console.log('Approving member:', newMemberAddress);
+    
     try {
-      const organizaitonId = await PharmaContract.methods.getMyOrganizationId().call({ from: accounts[0]});
-      await PharmaContract.methods.approveMembers(organizaitonId, newMemberAddress).send({ from: accounts[0] });
+      // Get the organization ID
+      const organizaitonId = await PharmaContract.getMyOrganizationId();
+  
+      // Approve the new member
+      const tx = await PharmaContract.approveMembers(organizaitonId, newMemberAddress, {
+        gasLimit: 300000,
+      });
+  
+      // Wait for the transaction to be confirmed
+      await tx.wait();
     } catch (error) {
-      console.error('Error creating Organization:', error);
-    }    console.log('Approving member:', newMemberAddress)
-  }
-
-  const handleDisapproveMember = async() => {
+      console.error('Error approving new member:', error);
+    }
+  };
+  
+  const handleDisapproveMember = async () => {
+    console.log('Disapproving member:', newMemberAddress);
+  
     try {
-      const organizaitonId = await PharmaContract.methods.getMyOrganizationId().call({ from: accounts[0]});
-      await PharmaContract.methods.disApproveMembers(organizaitonId, newMemberAddress).send({ from: accounts[0] });
+      // Get the organization ID
+      const organizaitonId = await PharmaContract.getMyOrganizationId();
+  
+      // Disapprove the member
+      const tx = await PharmaContract.disApproveMembers(organizaitonId, newMemberAddress, {
+        gasLimit: 300000,
+      });
+  
+      // Wait for the transaction to be confirmed
+      await tx.wait();
     } catch (error) {
-      console.error('Error creating Organization:', error);
-    }    console.log('Disapproving member:', newMemberAddress)
-  }
+      console.error('Error dis-approving new member:', error);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100">
