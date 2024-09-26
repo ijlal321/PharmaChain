@@ -45,14 +45,16 @@ export function TrackItemMapComponent({ id, refreshData }: TrackItemMapProps) {
   const [trackingData, setTrackingData] = useState<TrackingItem[]>([]);
 
 
-  useEffect(() => {
-    delete L.Icon.Default.prototype._getIconUrl
-    L.Icon.Default.mergeOptions({
-      iconRetinaUrl: '/marker-icon-2x.png',
-      iconUrl: '/marker-icon.png',
-      shadowUrl: '/marker-shadow.png',
-    })
-  }, [])
+  // useEffect(() => {
+  //   if(typeof window !== 'undefined'){
+  //     delete L.Icon.Default.prototype._getIconUrl
+  //     L.Icon.Default.mergeOptions({
+  //       iconRetinaUrl: '/marker-icon-2x.png',
+  //       iconUrl: '/marker-icon.png',
+  //       shadowUrl: '/marker-shadow.png',
+  //     })
+  //   }
+  // }, [])
 
   useEffect(() => {
     const init = async () => {
@@ -101,7 +103,7 @@ export function TrackItemMapComponent({ id, refreshData }: TrackItemMapProps) {
             ))}
           </div>
           <div className="lg:col-span-2 h-[600px] rounded-lg overflow-hidden">
-            {trackingData && trackingData.length > 0 && trackingData[0].coordinates != null &&
+            {typeof window !== 'undefined' && trackingData && trackingData.length > 0 && trackingData[0].coordinates != null &&
               <MapContainer
                 // @ts-ignore
                 center={trackingData[0].coordinates} zoom={4} style={{ height: '100%', width: '100%' }}>

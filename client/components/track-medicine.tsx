@@ -201,6 +201,8 @@ export function TrackMedicine() {
           </Card>
         )}
 
+         {/* ////////////////////////// */}
+
         <Card className="bg-gray-800 border-gray-700">
           <CardHeader>
             <CardTitle className="text-gray-100">Add New Checkpoint</CardTitle>
