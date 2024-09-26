@@ -123,6 +123,7 @@ export function HomePageComponent() {
               <TeamMember name="David" role="Frontend Developer" />
               <TeamMember name="Ijlal" role="Smart Contract Engineer" />
               <TeamMember name="Shahbaz" role="UI/UX Designer" />
+              <TeamMember name="Ai Assistant" role="Helps with extra no brainer tasks" />
             </div>
           </div>
         </section>
