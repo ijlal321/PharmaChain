@@ -6,6 +6,7 @@ Pharma Chain is a full-stack blockchain application designed to enhance the tran
 
 - [Overview](#overview)
 - [Live Deployment](#live-deployment)
+- [Demo Video](#demo-video)
 - [Features](#features)
 - [Smart Contract Deployment](#smart-contract-deployment)
 - [Getting Started](#getting-started)
@@ -21,6 +22,10 @@ Pharma Chain enables users to verify the authenticity of drugs, ensuring safe an
 
 Pharma Chain is live and can be accessed at:  
 [https://pharma-chain-gamma.vercel.app/](https://pharma-chain-gamma.vercel.app/)
+
+## Demo Video
+Check out the demo video to see the project in action:
+[Watch the Demo](https://youtu.be/4ly2Bicif_w)
 
 ## Features
 
