@@ -1,39 +1,70 @@
-# React Truffle Box
+# Pharma Chain
 
-This box comes with everything you need to start using Truffle to write, compile, test, and deploy smart contracts, and interact with them from a React app.
+Pharma Chain is a full-stack blockchain application designed to enhance the transparency and authenticity of the pharmaceutical supply chain. This project was developed for the **Polygon Fest 24 Hackathon** by a dedicated team comprising Ijlal, Shahbaz, and David.
 
-## Installation
+## Table of Contents
 
-First ensure you are in an empty directory.
+- [Overview](#overview)
+- [Live Deployment](#live-deployment)
+- [Features](#features)
+- [Smart Contract Deployment](#smart-contract-deployment)
+- [Getting Started](#getting-started)
+- [Team Members](#team-members)
+- [Contributing](#contributing)
+- [License](#license)
 
-Run the `unbox` command using 1 of 2 ways.
+## Overview
 
-```sh
-# Install Truffle globally and run `truffle unbox`
-$ npm install -g truffle
-$ truffle unbox react
-```
+Pharma Chain enables users to verify the authenticity of drugs, ensuring safe and trustworthy medication for everyone. With our intuitive interface built on React and Next.js, users can easily interact with the application and access crucial information about their medications.
 
-```sh
-# Alternatively, run `truffle unbox` via npx
-$ npx truffle unbox react
-```
+## Live Deployment
 
-Start the react dev server.
+Pharma Chain is live and can be accessed at:  
+[https://pharma-chain-gamma.vercel.app/](https://pharma-chain-gamma.vercel.app/)
 
-```sh
-$ cd client
-$ npm start
-```
+## Features
 
-From there, follow the instructions on the hosted React app. It will walk you through using Truffle and Ganache to deploy the `SimpleStorage` contract, making calls to it, and sending transactions to change the contract's state.
+- **Wallet Integration**: Connect your MetaMask wallet to get started.
+- **Organization Creation**: Users can create their own pharmaceutical organizations.
+- **Launch New Medicines**: Easily introduce new medicines into the supply chain.
+- **Add Supply Chain Stops**: Manage the supply chain by adding key stops where drugs are handled.
+- **Medicine Tracking**: Users can track their medications through the supply chain, ensuring they receive genuine products.
 
-## FAQ
+## Smart Contract Deployment
 
-- __How do I use this with Ganache (or any other network)?__
+The Pharma Chain smart contract is deployed on the Polygon Amol network at the following address:  
+`0x3038680642a28F66e586d75E20f815d93b72AD3F`
 
-  The Truffle project is set to deploy to Ganache by default. If you'd like to change this, it's as easy as modifying the Truffle config file! Check out [our documentation on adding network configurations](https://trufflesuite.com/docs/truffle/reference/configuration/#networks). From there, you can run `truffle migrate` pointed to another network, restart the React dev server, and see the change take place.
+## Getting Started
 
-- __Where can I find more resources?__
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/pharma-chain.git
+   ```
+2. Navigate to the client directory:
+   ```bash
+   cd pharma-chain/client
+   ```
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the application:
+   ```bash
+   npm run dev
+   ```
+5. Connect your MetaMask wallet to interact with the application.
 
-  This Box is a sweet combo of [Truffle](https://trufflesuite.com) and [Webpack](https://webpack.js.org). Either one would be a great place to start!
+## Team Members
+
+- **Ijlal**: Project Lead and Blockchain Developer
+- **Shahbaz**: Frontend Developer and UI/UX Designer
+- **David**: Backend Developer and Smart Contract Engineer
+
+## Contributing
+
+We welcome contributions! If you have suggestions or improvements, feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License.
