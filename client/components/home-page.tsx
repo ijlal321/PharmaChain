@@ -120,10 +120,9 @@ export function HomePageComponent() {
           <div className="container mx-auto px-4">
             <h3 className="text-3xl font-bold text-center mb-12 text-cyan-400">Our Team</h3>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <TeamMember name="Alice" role="Blockchain Developer" />
-              <TeamMember name="Bob" role="Smart Contract Specialist" />
-              <TeamMember name="Charlie" role="UI/UX Designer" />
-              <TeamMember name="Diana" role="Project Manager" />
+              <TeamMember name="David" role="Frontend Developer" />
+              <TeamMember name="Ijlal" role="Smart Contract Engineer" />
+              <TeamMember name="Shahbaz" role="UI/UX Designer" />
             </div>
           </div>
         </section>
