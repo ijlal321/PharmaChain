@@ -7,8 +7,10 @@ node_modules
 
 # Production
 build
-client/src/contracts
-client/*/src/contracts
+.next
+
+client/.next
+
 
 # Testing
 coverage
