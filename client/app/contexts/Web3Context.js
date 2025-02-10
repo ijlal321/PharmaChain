@@ -32,7 +32,7 @@ export const Web3Provider = ({ children }) => {
           // );
 
           const contractInstance = new ethers.Contract(
-            '0x3038680642a28F66e586d75E20f815d93b72AD3F',
+            myPharma.networks[11155111].address,
             myPharma.abi,
             signer
           );
